@@ -11,3 +11,6 @@ mapper文件生成器
 ![mm2](https://user-images.githubusercontent.com/2569600/34067288-ac2c15c6-e25c-11e7-9b17-956ab248b6e0.png)
 
 目前sql逆向工程工具并不少见，但一般用起来比较繁琐，故定制自用一个简单版本
+
+#### TODO List
+ -[ ] Auto Increment字段不放入Columns中 
