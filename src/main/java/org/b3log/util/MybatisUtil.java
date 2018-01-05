@@ -15,6 +15,7 @@ import java.util.List;
  */
 public class MybatisUtil {
     private static final String driver = "com.mysql.jdbc.Driver";
+
     public static boolean generate(MapperInfo mapperInfo) {
         if (!mapperInfo.checkParam()) {
             return false;
@@ -24,9 +25,9 @@ public class MybatisUtil {
         List<String> tableList = mapper.showTables();
         for (String table : tableList) {
             List<TableColumn> columnList = mapper.getTableColumns(table, mapperInfo.getDatabase());
-            FileUtil.writeMapperXml(StringUtil.CamelToUpperCase(table), MapperXmlUtil.generateMapperXml(mapperInfo.getMapperJavaPack(), StringUtil.CamelToUpperCase(table), columnList));
-            FileUtil.writeMapperJava(StringUtil.CamelToUpperCase(table), MapperJavaUtil.generateMapperJava(mapperInfo.getMapperJavaPack(), StringUtil.CamelToUpperCase(table)));
-            FileUtil.writeModel(StringUtil.CamelToUpperCase(table), ModelCodeUtil.generateModel(mapperInfo.getModelPack(), StringUtil.CamelToUpperCase(table), columnList));
+            FileUtil.writeMapperXml(StringUtil.CamelToUpperCase(table) + "Mapper", MapperXmlUtil.generateMapperXml(mapperInfo.getMapperJavaPack(), StringUtil.CamelToUpperCase(table) + "Mapper", columnList));
+            FileUtil.writeMapperJava(StringUtil.CamelToUpperCase(table) + "Mapper", MapperJavaUtil.generateMapperJava(mapperInfo.getMapperJavaPack(), StringUtil.CamelToUpperCase(table) + "Mapper"));
+            FileUtil.writeModel(StringUtil.CamelToUpperCase(table) + "PO", ModelCodeUtil.generateModel(mapperInfo.getModelPack(), StringUtil.CamelToUpperCase(table) + "PO", columnList));
         }
         session.close();
         return true;
