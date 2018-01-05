@@ -5,6 +5,8 @@ import com.google.googlejavaformat.java.FormatterException;
 import org.apache.commons.lang3.StringUtils;
 import org.b3log.model.TableColumn;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -26,7 +28,8 @@ public class ModelCodeUtil {
             codeHead.append("import java.util.Date;\n");
         }
         codeHead.append("\n");
-        codeHead.append(CommonValues.TITLE);
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy年MM月dd日");
+        codeHead.append(CommonValues.TITLE.replace(CommonValues.REPLACE,simpleDateFormat.format(new Date())));
         codeHead.append("@Data\n");
         StringBuilder codeBody = new StringBuilder();
         codeBody.append("public class ").append(className).append("{\n");
